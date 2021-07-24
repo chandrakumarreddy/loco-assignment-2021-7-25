@@ -14,3 +14,9 @@ a {
 * {
   box-sizing: border-box;
 }
+
+:root {
+  --colors-primary: rgb(5, 5, 6);
+  --column-gutter: 16px;
+  --columns: 3;
+}
