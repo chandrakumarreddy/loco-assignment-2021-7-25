@@ -1,6 +1,7 @@
 ### Loco Frontend Assessment:
 
 Build a simple React app that allows viewing and interacting with a grid of curated photos from Unsplash
+
 ● Use create-react-app to set up a basic single-page React application as shown here: https://reactjs.org/docs/create-a-new-react-app.html#create-react-app. (NOTE: We will only focus on creating a single-page React application, so don't worry about the other sections on that page such as Next.js).
 ● Refer to the Unsplash API docs here to set up a developer account: https://unsplash.com/documentation.
 ● Display a grid of photos in your React app. Use the GET /photos/curated endpoint from the Unsplash API to get a set of curated images.
