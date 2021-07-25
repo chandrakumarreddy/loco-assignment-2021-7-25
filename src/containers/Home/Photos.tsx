@@ -1,7 +1,6 @@
 import * as React from "react";
 import { IPhoto } from "interfaces/photo";
 import { Grid, Image } from "./Home.css";
-import styled from "@emotion/styled";
 
 interface IProps {
   photos: IPhoto[];
