@@ -2,13 +2,13 @@ import * as React from "react";
 import { IPhoto } from "interfaces/photo";
 
 interface IPhotosContext {
-  photos: IPhoto[];
-  setPhotos: React.Dispatch<React.SetStateAction<IPhoto[]>>;
+  photos: IPhoto[][];
+  updatePhotos: (photos: IPhoto[]) => void;
 }
 
 const PhotosContext = React.createContext<IPhotosContext>({
   photos: [],
-  setPhotos: () => {},
+  updatePhotos: () => {},
 });
 
 export const usePhotos = () => {

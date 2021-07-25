@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Nav, Logo } from "./Layout.css";
+import { Container, Nav, Logo, Wrapper } from "./Layout.css";
 
 interface IProps {}
 
@@ -9,7 +9,7 @@ const Layout: React.FC = ({ children }: React.PropsWithChildren<IProps>) => {
       <Nav>
         <Logo src="/images/logo.png" width="auto" height="32px" />
       </Nav>
-      {children}
+      <Wrapper>{children}</Wrapper>
     </Container>
   );
 };

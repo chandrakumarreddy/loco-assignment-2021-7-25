@@ -8,5 +8,13 @@ export const Nav = styled.nav`
   display: flex;
   align-items: center;
   padding: 0 2rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
 `;
+
 export const Logo = styled.img``;
+
+export const Wrapper = styled.div`
+  margin-top: 64px;
+`;

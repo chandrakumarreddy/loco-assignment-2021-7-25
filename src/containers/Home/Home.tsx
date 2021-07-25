@@ -1,45 +1,78 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import * as React from "react";
-import { Container } from "./Home.css";
-import { IPhoto } from "interfaces/photo";
+import { Container, HomeWrapper, Divider } from "./Home.css";
+import { IPhoto, IGallery } from "interfaces/photo";
 import Photos from "./Photos";
 import { usePhotos } from "store/PhotosContext";
-import getPhotos from "./getPhotos";
 import { fetchPhotos } from "api/fetchPhotos";
-
-interface IProps {
-  photos: IPhoto[];
-}
+import LightBox from "components/Base/LightBox/LightBox";
+import Loader from "./Loader";
+import LastElement from "./LastElement";
+import Header from "./Header/Header";
 
 const Home = () => {
+  const [open, setOpen] = React.useState(false);
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [gallery, setGallery] = React.useState<IGallery[]>([]);
   const [pageNumber, setPageNumber] = React.useState<number>(1);
   const [loading, setLoading] = React.useState(false);
-  const { photos, setPhotos } = usePhotos();
+  const { photos, updatePhotos } = usePhotos();
   const observer = React.useRef<IntersectionObserver>();
   const lastElement = React.useCallback(
     (node) => {
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver(async (entries) => {
         if (entries[0].isIntersecting) {
-          setPageNumber((p) => p + 1);
           setLoading(true);
-          const resp = await fetchPhotos(pageNumber);
-          setPhotos(photos.concat(resp));
+          const resp = await fetchPhotos(pageNumber + 1);
+          setPageNumber(pageNumber + 1);
+          updatePhotos(resp);
           setLoading(false);
         }
       });
-      if (node) observer.current.observe(node);
+      if (node) {
+        observer.current.observe(node);
+      }
     },
-    [pageNumber, photos]
+    [loading, pageNumber, photos]
   );
-  const newPhotos = getPhotos(photos);
+  const handleClick = (index: number) => (n: number) => {
+    setOpen((c) => !c);
+    setCurrentIndex(n);
+    setGallery(
+      photos[index].map((_photo: IPhoto) => ({
+        url: _photo.urls.regular,
+        altTag: _photo.description,
+        type: "photo",
+      }))
+    );
+  };
   return (
-    <Container>
-      {newPhotos.map((_photos, index) => (
-        <Photos photos={_photos} key={String(index)} />
-      ))}
-      <div ref={lastElement} />
-    </Container>
+    <HomeWrapper>
+      <Header />
+      <Container>
+        {photos.map((_photos, index: number) => (
+          <React.Fragment key={String(index)}>
+            <Photos
+              photos={_photos}
+              key={String(index)}
+              handleClick={handleClick(index)}
+            />
+            <Divider />
+          </React.Fragment>
+        ))}
+        {!loading && <LastElement lastElement={lastElement} />}
+      </Container>
+      {(loading || !photos.length) && <Loader />}
+      {open && (
+        <LightBox
+          gallery={gallery}
+          currentIndex={currentIndex}
+          onClose={handleClick(0)}
+          onEscape={setOpen}
+        />
+      )}
+    </HomeWrapper>
   );
 };
 

@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Loco Assigment</title>
+        <title>Made with ❤️ By chandra</title>
       </Head>
       <Layout>
         <Component {...pageProps} />

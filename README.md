@@ -1,8 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Loco Frontend Assessment:
+
+Build a simple React app that allows viewing and interacting with a grid of curated photos from Unsplash
+● Use create-react-app to set up a basic single-page React application as shown here: https://reactjs.org/docs/create-a-new-react-app.html#create-react-app. (NOTE: We will only focus on creating a single-page React application, so don't worry about the other sections on that page such as Next.js).
+● Refer to the Unsplash API docs here to set up a developer account: https://unsplash.com/documentation.
+● Display a grid of photos in your React app. Use the GET /photos/curated endpoint from the Unsplash API to get a set of curated images.
+● The grid of photos should preserve the aspect ratio of the photos it's displaying, meaning it shouldn't crop the image in any way.
+● The grid should be responsive, and should work in both portrait and landscape orientations on both mobile and desktop browsers.
+● The grid should support infinite scrolling, using a lazy-load strategy to fetch additional images as the user scrolls.
+● When the user taps on a photo on the grid it should show the full photo in a full width lightbox popup with more information about the photo.
+● The lightbox popup should be dismissible with a close button.
+● Add left/right arrows or swiping to the lightbox, to allow browsing the previous/next
+images without dismissing the popup.
+● You're free to use existing open source React components or Javascript
+packages/libraries from npm to complete this task.
 
 ## Getting Started
 
-First, run the development server:
+The development server:
 
 ```bash
 npm run dev
@@ -12,23 +26,11 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.tsx`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+This project is bootstrapped with Nextjs .To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
